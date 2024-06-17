@@ -1,0 +1,11 @@
+{
+    "name": "Track",
+    "alias": "track",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Track\\Providers\\TrackServiceProvider"
+    ],
+    "files": []
+}

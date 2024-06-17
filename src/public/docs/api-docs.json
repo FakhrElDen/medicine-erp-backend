@@ -1,0 +1,6070 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Medical",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "http://medical-bd.restart-technology.com/api",
+      "description": "DEVELOPMENT SERVER",
+      "variables": {}
+    },
+    {
+      "url": "http://medical-bs.restart-technology.com/api",
+      "description": "STAGING SERVER",
+      "variables": {}
+    },
+    {
+      "url": "http://localhost:8080/api",
+      "description": "LOCAL SERVER",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "login",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "superadmin@medical.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "password"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/auth/logout": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "logout",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/clients": {
+      "get": {
+        "tags": [
+          "Clients"
+        ],
+        "summary": "get clients list",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/pharmacies": {
+      "get": {
+        "tags": [
+          "Pharmacies"
+        ],
+        "summary": "store pharmacies list",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "discount_slat",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "city_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "area_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "track_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "iterate_available_quantity",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "payment_type",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "debt_limit",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "target",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "minimum_target",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "ally",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "payment_period",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "extra_discount",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "follow_up",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "call_shift",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "client_type",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "morning_sales_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "night_sales_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pagination_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/pharmacies/add-extra-discount": {
+      "put": {
+        "tags": [
+          "Pharmacies"
+        ],
+        "summary": "store pharmacies list",
+        "parameters": [
+          {
+            "name": "extra_discount",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "expiration_extra_discount",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "minimum_for_extra_discount",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/pharmacies/delete-media": {
+      "delete": {
+        "tags": [
+          "Pharmacies"
+        ],
+        "summary": "delete media",
+        "parameters": [
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "media_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/pharmacies/store": {
+      "post": {
+        "tags": [
+          "Pharmacies"
+        ],
+        "summary": "store pharmacies list",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "phone_number",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "city_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "area_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "optional_phone_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "commercial_registration_no",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "license_no",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "tax_card_no",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "doctor",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "note",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "target",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "minimum_target",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "delivery_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "iterate_available_quantity",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "track_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "extra_discount",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "call_shift",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "all",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "follow_up",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "payment_type",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "debt_limit",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pharmacy_media",
+            "in": "query",
+            "type": "image & file",
+            "required": false
+          },
+          {
+            "name": "client_name",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "client_type",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "client_phone_number",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/pharmacies/add-pharmacy-to-client": {
+      "post": {
+        "tags": [
+          "Pharmacies"
+        ],
+        "summary": "store pharmacies list",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "phone_number",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "city_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "area_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "optional_phone_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "commercial_registration_no",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "license_no",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "tax_card_no",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "doctor",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "note",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "target",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "minimum_target",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "delivery_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "iterate_available_quantity",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "track_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "extra_discount",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "call_shift",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "all",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "follow_up",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "payment_type",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "debt_limit",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pharmacy_media",
+            "in": "query",
+            "type": "image & file",
+            "required": false
+          },
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/pharmacies/update": {
+      "put": {
+        "tags": [
+          "Pharmacies"
+        ],
+        "summary": "store pharmacies list",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "phone_number",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "city_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "area_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "optional_phone_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "commercial_registration_no",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "license_no",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "tax_card_no",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "doctor",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "note",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "target",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "minimum_target",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "delivery_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "iterate_available_quantity",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "track_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "extra_discount",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "call_shift",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "all",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "follow_up",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "payment_type",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "debt_limit",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pharmacy_media",
+            "in": "query",
+            "type": "image & file",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/pharmacies/settings": {
+      "get": {
+        "tags": [
+          "Pharmacies"
+        ],
+        "summary": "Pharmacy settings",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/waiting-list": {
+      "get": {
+        "tags": [
+          "Waiting-List"
+        ],
+        "summary": "get waiting list",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/waiting-list/create": {
+      "post": {
+        "tags": [
+          "Waiting-List"
+        ],
+        "summary": "Add client to waiting list",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "client_id"
+                ],
+                "type": "object",
+                "properties": {
+                  "client_id": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/users/sales": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "get clients list",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/users/roles": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "get roles list",
+        "parameters": [
+          {
+            "name": "role_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/users/roles/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "get users by role list",
+        "parameters": [
+          {
+            "name": "role_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/users/delivers": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "get delivers by role list",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/users/receivers-auditor": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "listing receivers auditor",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/users/general-preparation": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "listing general preparation",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/users/retail-preparation": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "listing retail preparation",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/users/storing-workers": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "listing storing workers",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/users/retail-sales-auditor": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "listing retail sales auditor",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/listings": {
+      "get": {
+        "tags": [
+          "Listings"
+        ],
+        "summary": "get listings",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/listings/create": {
+      "post": {
+        "tags": [
+          "Listings"
+        ],
+        "summary": "Add List",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "name",
+                  "pharmacy_ids"
+                ],
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "First List"
+                  },
+                  "user_ids": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "pharmacy_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "example": "2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/listings/delete": {
+      "delete": {
+        "tags": [
+          "Listings"
+        ],
+        "summary": "delete list",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "listing_id"
+                ],
+                "type": "object",
+                "properties": {
+                  "listing_id": {
+                    "type": "integer",
+                    "example": 3
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/listings/update": {
+      "put": {
+        "tags": [
+          "Listings"
+        ],
+        "summary": "update list name or the clients",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "user_id",
+                  "listing_id",
+                  "pharmacy_ids"
+                ],
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "First List"
+                  },
+                  "listing_id": {
+                    "type": "integer",
+                    "example": "3t"
+                  },
+                  "pharmacy_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "example": "2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/cash_payment": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "get cash payments",
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/cash_receive": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "get cash receives",
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/balance/transferred": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "get transferred balance",
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/balance/received": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "get received balance",
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/transactions/sales": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "get sales invoices",
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "type": "string",
+            "example": "G1",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/transactions/purchases": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "get purchases invoices",
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "type": "string",
+            "example": "G1",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/transactions/reports": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "get reports sum",
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/transactions/reports-owe": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "get reports owe sum",
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/transactions/notifications": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "get notifications",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pagination_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date",
+            "example": "2023-07-02",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "get products list",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "manufacturer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "product_type",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "price_to",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "discount_from",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "discount_to",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "price_from",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "quantity_more_than_zero",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "sort_data",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "example": "name_en, name_ar, price, product_type, manufacturer_en, manufacturer_ar"
+          },
+          {
+            "name": "sort_type",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "example": "asc,desc"
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/pages": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "get products list paginated",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "manufacturer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "product_type",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "price_to",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "discount_from",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "discount_to",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "price_from",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "quantity_more_than_zero",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "sort_data",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "example": "name_en, name_ar, price, product_type, manufacturer_en, manufacturer_ar"
+          },
+          {
+            "name": "sort_type",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "example": "asc,desc"
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/update/{product_id}": {
+      "patch": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "update products",
+        "parameters": [
+          {
+            "name": "barcode",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "products/view-by-barcode": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "view product by barcode",
+        "parameters": [
+          {
+            "name": "barcode",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/medication-alternatives": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "get medication alternatives list",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/manufacturers": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "get all manufacturers",
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/related-active-ingredient": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "get related alternatives list",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/batches": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "get newest product batches",
+        "parameters": [
+          {
+            "name": "created_at",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/batches/paginate": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "get all batches paginated",
+        "parameters": [
+          {
+            "name": "supplied_at",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "created_at",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "batch_id",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },{
+
+            "name": "manufacturer_id",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "product_id",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "supplier_id",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "receiver_reviewer_id",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "old_operating_number",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "new_operating_number",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "quantity_more_than_zero",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "new_expired_at",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "old_expired_at",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/batches/update": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "update product",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "batch_id",
+                  "quantity",
+                  "expired_at",
+                  "operating_number"
+                ],
+                "type": "object",
+                "properties": {
+                  "batch_id": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "expired_at": {
+                    "type": "date"
+                  },
+                  "operating_number": {
+                    "type": "string",
+                    "example": "1234q56w789e"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/batches/updated-operations": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "get all updated operations",
+        "parameters": [
+          {
+            "name": "manufacturer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "corridor_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "stand",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },{
+
+            "name": "shelf",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "supplied_at",
+            "in": "query",
+            "type": "date",
+            "required": false
+          },
+          {
+            "name": "supplier_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "created_by",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "updated_by",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "receiver_reviewer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "storing_worker_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "second_user_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "quantity_more_than_zero",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "price_from",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "price_to",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/batches/updated-operations/all": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "get all updated operations for print",
+        "parameters": [
+          {
+            "name": "manufacturer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "corridor_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "stand",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },{
+
+            "name": "shelf",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "supplied_at",
+            "in": "query",
+            "type": "date",
+            "required": false
+          },
+          {
+            "name": "supplier_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "created_by",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "updated_by",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "receiver_reviewer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "storing_worker_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "second_user_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "quantity_more_than_zero",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "price_from",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "price_to",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/bonus": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "get products has bonus",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/percentage/slat-one": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "get products has percentage offer in slat one",
+        "parameters": [
+          {
+            "name": "search_offer_one",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "example": "product_name"
+          },
+          {
+            "name": "pagination_number_one",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "example": 2
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/percentage/slat-two": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "get products has percentage offer in slat two",
+        "parameters": [
+          {
+            "name": "search_offer_two",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "example": "product_name"
+          },
+          {
+            "name": "pagination_number_two",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "example": 2
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/shortage": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "get shortage products",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/reports/summary": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "product movement summary page",
+        "parameters": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "warehouse_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "from",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "to",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/reports/sales": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "product movement sales (paginated)",
+        "parameters": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "warehouse_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "pharmacy_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "from",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "to",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "sort_by",
+            "type": "string",
+            "description": "allowed values: pharmacy_name, created_at, quantity_before, amount, quantity_after, user_name, warehouse_name",
+            "in": "query"
+          },
+          {
+            "name": "direction",
+            "type": "string",
+            "description": "allowed values: asc, desc",
+            "in": "query"
+          },
+          {
+            "name": "page",
+            "type": "integer",
+            "in": "query"
+          }
+        ],
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/reports/sales-returns": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "product movement sales returns (paginated)",
+        "parameters": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "warehouse_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "pharmacy_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "from",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "to",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "sort_by",
+            "type": "string",
+            "description": "allowed values: pharmacy_name, created_at, quantity_before, amount, quantity_after, user_name, warehouse_name",
+            "in": "query"
+          },
+          {
+            "name": "direction",
+            "type": "string",
+            "description": "allowed values: asc, desc",
+            "in": "query"
+          },
+          {
+            "name": "page",
+            "type": "integer",
+            "in": "query"
+          }
+        ],
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/reports/purchases": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "product movement purchases (paginated)",
+        "parameters": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "warehouse_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "supplier_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "from",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "to",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "sort_by",
+            "type": "string",
+            "description": "allowed values: supplier_name, created_at, quantity_before, amount, quantity_after, user_name, warehouse_name",
+            "in": "query"
+          },
+          {
+            "name": "direction",
+            "type": "string",
+            "description": "allowed values: asc, desc",
+            "in": "query"
+          },
+          {
+            "name": "page",
+            "type": "integer",
+            "in": "query"
+          }
+        ],
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/reports/purchases-returns": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "product movement purchases returns (paginated)",
+        "parameters": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "warehouse_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "supplier_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "from",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "to",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "sort_by",
+            "type": "string",
+            "description": "allowed values: supplier_name, created_at, quantity_before, amount, quantity_after, user_name, warehouse_name",
+            "in": "query"
+          },
+          {
+            "name": "direction",
+            "type": "string",
+            "description": "allowed values: asc, desc",
+            "in": "query"
+          },
+          {
+            "name": "page",
+            "type": "integer",
+            "in": "query"
+          }
+        ],
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/reports/inventory": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "product movement inventory (paginated)",
+        "parameters": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "warehouse_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "from",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "to",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "sort_by",
+            "type": "string",
+            "description": "allowed values: user_name, warehouse_name, created_at, quantity_before, amount, quantity_after",
+            "in": "query"
+          },
+          {
+            "name": "direction",
+            "type": "string",
+            "description": "allowed values: asc, desc",
+            "in": "query"
+          },
+          {
+            "name": "page",
+            "type": "integer",
+            "in": "query"
+          }
+        ],
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/products/reports/transfers": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "product movement transfers (paginated)",
+        "parameters": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "warehouse_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "from",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "to",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "sort_by",
+            "type": "string",
+            "description": "allowed values: from_warehouse_name, to_warehouse_name, user_name, created_at, quantity_before, amount, quantity_after",
+            "in": "query"
+          },
+          {
+            "name": "direction",
+            "type": "string",
+            "description": "allowed values: asc, desc",
+            "in": "query"
+          },
+          {
+            "name": "page",
+            "type": "integer",
+            "in": "query"
+          }
+        ],
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/offers": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "check offers on product",
+        "parameters": [
+          {
+            "name": "quantity",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "product_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouses": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get warehouses list",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "product_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouses/main-warehouse": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get warehouses list",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "product_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/invoice-content": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get invoice content",
+        "parameters": [
+          {
+            "name": "sorted_by",
+            "in": "query",
+            "type": "text",
+            "required": false
+          },
+          {
+            "name": "created_at",
+            "in": "query",
+            "type": "date",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "invoice_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "basket_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/invoices": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get warehouse invoices list",
+        "parameters": [
+          {
+            "name": "sorted_by",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/ready-invoices": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get warehouse ready invoices list",
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "created_at",
+            "in": "query",
+            "type": "date",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "corridor",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "invoice_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/view-ready-invoice": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "view ready invoice",
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "created_at",
+            "in": "query",
+            "type": "date",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "corridor",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "invoice_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/unready-invoices": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get warehouse unready invoices list",
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "basket_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "corridor",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/view-unready-invoice": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "view unready invoice",
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "created_at",
+            "in": "query",
+            "type": "date",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "corridor",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "invoice_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/inventoried-invoices": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "listing inventoried invoice",
+        "parameters": [
+          {
+            "name": "created_at",
+            "in": "query",
+            "type": "date",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "auditor_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "invoice_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/inventoried-invoice-content": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "view inventoried invoice",
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/baskets/create": {
+      "post": {
+        "tags": [
+          "Baskets"
+        ],
+        "summary": "Create Basket",
+        "parameters": [
+          {
+            "name": "number",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/baskets/complete": {
+      "post": {
+        "tags": [
+          "Baskets"
+        ],
+        "summary": "Complete Basket",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "basket_ids",
+                  "batch_ids",
+                  "order_id",
+                  "corridor"
+                ],
+                "type": "object",
+                "properties": {
+                  "corridor": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "order_id": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "basket_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "batch_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/baskets/{basket_id}/delete": {
+      "delete": {
+        "tags": [
+          "Baskets"
+        ],
+        "summary": "Delete Basket",
+        "parameters": [
+          {
+            "name": "basket_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/batches/storing": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "Listing batches to store it",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/batches/stored": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "Listing stored batches",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/batches/complete-storing": {
+      "patch": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "Update batches to be stored",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "batch_ids"
+                ],
+                "type": "object",
+                "properties": {
+                  "batch_ids": {
+                    "type": "array"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/batches/receiving": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "Listing batches to receive it",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/batches/received": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "Listing received batches",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/batches/complete-receiving": {
+      "patch": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "Update batches to be stored",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "batch_ids"
+                ],
+                "type": "object",
+                "properties": {
+                  "batch_ids": {
+                    "type": "array"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/batches/duplicate": {
+      "post": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "edit operating number and expired date of the batch",
+        "parameters": [
+          {
+            "name": "batch_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "cart_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "expired_at",
+            "in": "query",
+            "type": "date",
+            "required": true
+          },
+          {
+            "name": "operating_number",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/batches/inventorying": {
+      "post": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "confirm batch for inventorying",
+        "parameters": [
+          {
+            "name": "batch_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "cart_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "quantity",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/batches/complete-inventorying": {
+      "post": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "complete inventorying",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "packaging",
+                  "non_inventoried_batches",
+                  "order_id"
+                ],
+                "type": "object",
+                "properties": {
+                  "packaging['bags_num']": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "packaging['cartons_num']": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "packaging['fridges_num']": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "packaging['invoices_num']": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "non_inventoried_batches_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "order_id": {
+                    "type": "integer",
+                    "example": 2
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/corridors": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "listing corridors",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/warehouses": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "listing warehouse settings",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/warehouses/system": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get multiple corridor enabled value",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "set warehouse system, multiple corridors or single warehouse",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "multiple_corridors_enabled",
+                  "default_sorting"
+                ],
+                "type": "object",
+                "properties": {
+                  "multiple_corridors_enabled": {
+                    "type": "integer",
+                    "description": "boolean: 0 or 1"
+                  },
+                  "default_sorting": {
+                    "type": "string",
+                    "description": "allowed values: product_name, manufacturer_name"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/warehouses/corridors/create": {
+      "post": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "create corridor",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "number"
+                ],
+                "type": "object",
+                "properties": {
+                  "number": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/warehouses/corridors/{id}/update": {
+      "post": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "create corridor",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "number"
+                ],
+                "type": "object",
+                "properties": {
+                  "number": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/warehouses/baskets/set-total-count": {
+      "post": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "set total baskets count",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "count"
+                ],
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/warehouses/baskets/mark-damaged": {
+      "post": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "add to damaged baskets",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "number"
+                ],
+                "type": "object",
+                "properties": {
+                  "number": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/warehouses/baskets/{id}/restore": {
+      "post": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "create corridor",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/warehouses/high-price": {
+      "post": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "set the price above which a product is considered expensive",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "price"
+                ],
+                "type": "object",
+                "properties": {
+                  "price": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/warehouses/expiration-warning": {
+      "post": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "set remaining months count below which a product is considered expiring soon",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "months"
+                ],
+                "type": "object",
+                "properties": {
+                  "months": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/settlement": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get pending settlement batches",
+        "parameters": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "warehouse_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "pharmacy_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "reviewed_by",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "from",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "to",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/settlement/finished": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get processed settlement batches",
+        "parameters": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "warehouse_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "pharmacy_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "reviewed_by",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "from",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "to",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/settlement/update": {
+      "post": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "update a settlement batch by returning all, some, or none of the quantity reported",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "id",
+                  "quantity"
+                ],
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "quantity": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouse/inventory": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get inventory settlements (corrections)",
+        "parameters": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "warehouse_id",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "from",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "to",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "sort_by",
+            "type": "string",
+            "description": "allowed values: user_name, warehouse_name, created_at, current_quantity, excess, shortage",
+            "in": "query"
+          },
+          {
+            "name": "direction",
+            "type": "string",
+            "description": "allowed values: asc, desc",
+            "in": "query"
+          }
+
+        ],
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouses/transfers/unconfirmed-transfers": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get warehouses unconfirmed-transfers list",
+        "parameters": [
+          {
+            "name": "transfer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_from_warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_to_warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "created_by",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "manufacturer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "corridor_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "product_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouses/transfers/unconfirmed-transfers/all": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get warehouses print unconfirmed-transfers list",
+        "parameters": [
+          {
+            "name": "transfer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_from_warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_to_warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "created_by",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "manufacturer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "corridor_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "product_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouses/transfers/products": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get warehousesconfirmed-transfers products list",
+        "parameters": [
+          {
+            "name": "transfer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_from_warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_to_warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "created_by",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "manufacturer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "corridor_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "product_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouses/transfers/products/all": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get warehouses print confirmed-transfers products list",
+        "parameters": [
+          {
+            "name": "transfer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_from_warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_to_warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "created_by",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "manufacturer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "corridor_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "product_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouses/transfers/orders": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get warehousesconfirmed-transfers orders list",
+        "parameters": [
+          {
+            "name": "transfer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_from_warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_to_warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "created_by",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "manufacturer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "corridor_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "product_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouses/transfers/orders/all": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "get warehouses print confirmed-transfers orders list",
+        "parameters": [
+          {
+            "name": "transfer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_from_warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "transfer_to_warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "created_by",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "manufacturer_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "corridor_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "product_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/warehouses/transfers/confirmed-transfers": {
+      "post": {
+        "tags": [
+          "Warehouses"
+        ],
+        "summary": "confirm transfer from & to warehouse",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "batch_transfer_id"
+                ],
+                "type": "object",
+                "properties": {
+                  "batch_transfer_id": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/carts": {
+      "get": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "get cart list",
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "cart_number",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "type": "code",
+            "required": true
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/carts/client-product": {
+      "get": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "get client product list according last month or from input date",
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/carts/number": {
+      "get": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "Get Cart Number & Cart Code",
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/carts/create": {
+      "post": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "Add to Cart",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "pharmacy_id",
+                  "client_id",
+                  "product_id",
+                  "quantity",
+                  "status",
+                  "warehouse_id",
+                  "code",
+                  "cart_number"
+                ],
+                "type": "object",
+                "properties": {
+                  "pharmacy_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "client_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "product_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "warehouse_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "example": 10
+                  },
+                  "status": {
+                    "type": "integer",
+                    "example": 0
+                  },
+                  "client_discount_difference": {
+                    "type": "integer",
+                    "example": 5
+                  },
+                  "code": {
+                    "type": "string",
+                    "example": "123asd"
+                  },
+                  "cart_number": {
+                    "type": "integer",
+                    "example": 5
+                  },
+                  "bonus": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "discount": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "note": {
+                    "type": "string",
+                    "example": "testing note"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/carts/batches/{cart_sub_batch_id}/delete": {
+      "delete": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "delete item from cart",
+        "parameters": [
+          {
+            "name": "cart_sub_batch_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/carts/delete-all": {
+      "delete": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "delete all items in cart",
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/carts/sales": {
+      "get": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "get sales product of user",
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "product_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "get orders list",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "order_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pagination_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "created_at",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "track_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "city_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "area_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "sales_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "payment_type",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "order_number",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/inventoried": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "get inventoried orders list",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "order_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pagination_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "created_at",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "track_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "city_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "area_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "sales_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "payment_type",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "order_number",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/create": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Create Order",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "client_id",
+                  "total_quantity",
+                  "total_price",
+                  "total_taxes",
+                  "extra_discount",
+                  "status",
+                  "total",
+                  "shipping_type",
+                  "order_id"
+                ],
+                "type": "object",
+                "properties": {
+                  "client_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "sales_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "total_quantity": {
+                    "type": "integer",
+                    "example": 10
+                  },
+                  "total_price": {
+                    "type": "integer",
+                    "example": 10
+                  },
+                  "total_taxes": {
+                    "type": "integer",
+                    "example": 10
+                  },
+                  "total": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "extra_discount": {
+                    "type": "integer",
+                    "example": 10
+                  },
+                  "status": {
+                    "type": "integer",
+                    "example": 0
+                  },
+                  "shipping_type": {
+                    "type": "integer",
+                    "example": 0
+                  },
+                  "order_id": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "note": {
+                    "type": "string",
+                    "example": "testing note"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/orders/invoice-content": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "get order content ",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/returns/": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "get returns orders list",
+        "parameters": [
+          {
+            "name": "warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/returns/returnables": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "get returns batches list",
+        "parameters": [
+          {
+            "name": "warehouse_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/returns/returnables/print": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "get all returns batches list to print",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/returns/get-return": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "get return order by return id",
+        "parameters": [
+          {
+            "name": "return_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/returns/create": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Create return Order",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "warehouse_id",
+                  "pharmacy_id",
+                  "products"
+                ],
+                "properties": {
+                  "pharmacy_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "warehouse_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "order_id": {
+                    "type": "integer",
+                    "example": 10
+                  },
+                  "products": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "returnable_type",
+                        "returnable_id",
+                        "quantity",
+                        "price",
+                        "discount",
+                        "total",
+                        "reason",
+                        "operating_number",
+                        "expired_at"
+                      ],
+                      "properties": {
+                        "returnable_type": {
+                          "type": "string",
+                          "example": "Product"
+                        },
+                        "returnable_id": {
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "quantity": {
+                          "type": "integer",
+                          "example": 5
+                        },
+                        "price": {
+                          "type": "number",
+                          "example": 10.99
+                        },
+                        "discount": {
+                          "type": "number",
+                          "example": 2.50
+                        },
+                        "total": {
+                          "type": "number",
+                          "example": 50.00
+                        },
+                        "reason": {
+                          "type": "string",
+                          "example": "Defective product"
+                        },
+                        "operating_number": {
+                          "type": "string",
+                          "example": "ABC123456789"
+                        },
+                        "expired_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2024-12-01"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/orders/returns/validate-quantity": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "validate quantity before store return with order",
+        "parameters": [
+          {
+            "name": "cart_sub_batch_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "quantity",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "discount",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/returns/validate-returns": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "validate store before return without order",
+        "parameters": [
+          {
+            "name": "cart_sub_batch_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "quantity",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "discount",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/invoice-content-inventoried": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "get order inventoried content ",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+
+    "/orders/reports/salesman-productivity": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "get Salesmen productivity",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/reports/salesman-sales": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "get Salesman's clients productivity",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "area_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/reports/city-sales": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "get city sales list",
+        "parameters": [
+          {
+            "name": "area_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/reports/track-sales": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "get track sales list",
+        "parameters": [
+          {
+            "name": "track_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/reports/client-sales": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "get client sales",
+        "parameters": [
+          {
+            "name": "pharmacy_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "pagination_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/reports/city-customer-sales": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "get city customer sales list",
+        "parameters": [
+          {
+            "name": "city_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "track_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/reports/city-customer-sales-non-deal": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "get city customer sales non dealers list",
+        "parameters": [
+          {
+            "name": "city_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "track_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/reports/city-and-governorate-productivity": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "get city and governorate productivity list",
+        "parameters": [
+          {
+            "name": "city_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "area_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "track_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/reports/governorate-productivity": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "get governorate productivity list",
+        "parameters": [
+          {
+            "name": "city_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/reports/city-productivity": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "get city productivity list",
+        "parameters": [
+          {
+            "name": "city_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/reports/track-productivity": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "get track productivity list",
+        "parameters": [
+          {
+            "name": "city_id",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/reports/seller-sales-with-his-clients": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "get Seller Sales with his clients request",
+        "parameters": [
+          {
+            "name": "sales_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/reports/seller-sales-with-non-his-clients": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "Seller sales with non his clients requests",
+        "parameters": [
+          {
+            "name": "sales_id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "date('Y-m-d')",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/complains/unsolved-complains": {
+      "get": {
+        "tags": [
+          "Setting"
+        ],
+        "summary": "get unSolved complains",
+        "parameters": [
+          {
+            "name": "pagination_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/complains/solved-complains": {
+      "get": {
+        "tags": [
+          "Setting"
+        ],
+        "summary": "get Solved complains",
+        "parameters": [
+          {
+            "name": "pagination_number",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/complains/show-complain": {
+      "get": {
+        "tags": [
+          "Setting"
+        ],
+        "summary": "show complain",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/complains/find": {
+      "get": {
+        "tags": [
+          "Setting"
+        ],
+        "summary": "show complain",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/settings/complains/create": {
+      "post": {
+        "tags": [
+          "Setting"
+        ],
+        "summary": "Add complaint",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "pharmacy_id",
+                  "user_id",
+                  "client_id",
+                  "sales_id",
+                  "role_id",
+                  "body"
+                ],
+                "type": "object",
+                "properties": {
+                  "pharmacy_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "user_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "client_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "sales_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "role_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "body": {
+                    "type": "string",
+                    "example": "testing note"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/settings/complains/update-solver-complain": {
+      "post": {
+        "tags": [
+          "Setting"
+        ],
+        "summary": "Update complaint",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "id",
+                  "sales_id"
+                ],
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "solver": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/areas": {
+      "get": {
+        "tags": [
+          "Area"
+        ],
+        "summary": "get all areas",
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/cities": {
+      "get": {
+        "tags": [
+          "City"
+        ],
+        "summary": "get all cities",
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    },
+    "/tracks": {
+      "get": {
+        "tags": [
+          "Track"
+        ],
+        "summary": "get all tracks",
+        "responses": {},
+        "security": [
+          {
+            "httpBearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "httpBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

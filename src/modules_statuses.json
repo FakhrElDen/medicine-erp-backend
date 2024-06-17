@@ -1,0 +1,14 @@
+{
+    "User": true,
+    "Area": true,
+    "Client": true,
+    "Track": true,
+    "Product": true,
+    "Warehouse": true,
+    "Order": true,
+    "Cart": true,
+    "Setting": true,
+    "Listing": true,
+    "Transaction": true,
+    "Purchase": true
+}
